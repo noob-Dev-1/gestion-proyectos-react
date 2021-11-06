@@ -1,1 +1,1 @@
-# gestion-proyectos-front
+# gestion-proyectos-react
