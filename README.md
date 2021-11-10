@@ -5,3 +5,6 @@
 Integrantes:
 
 Yulian Múnera Marín: Administrador de Bases de Datos
+
+
+Harold Stiven Gaviria Henao: Product Owner
