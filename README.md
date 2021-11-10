@@ -6,10 +6,10 @@
 
 ### Integrantes:
 
-:construction_worker: Yulian Múnera Marín: Administrador de Bases de Datos
+:computer: Yulian Múnera Marín: Administrador de Bases de Datos
 
 
-:construction_worker: Harold Stiven Gaviria Henao: Product Owner
+:computer: Harold Stiven Gaviria Henao: Product Owner
 
 
-:construction_worker: Cristian David Bustos Torres: Analista
+:computer: Cristian David Bustos Torres: Analista
