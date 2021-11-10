@@ -8,3 +8,6 @@ Yulian Múnera Marín: Administrador de Bases de Datos
 
 
 Harold Stiven Gaviria Henao: Product Owner
+
+
+Cristian David Bustos Torres: Analista
