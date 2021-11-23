@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enum';
 
+
 const IndexUsuarios = () => {
   const { data, error, loading } = useQuery(GET_USUARIOS);
 
@@ -21,8 +22,8 @@ const IndexUsuarios = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <div>
-      Datos Usuarios:
+    <div className ='m-24'>
+      <h2 className='text-3xl text-center font-extrabold text-gray-900'>Datos Usuarios:</h2>
       <table className='tabla'>
         <thead>
           <tr>

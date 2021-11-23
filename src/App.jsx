@@ -9,6 +9,8 @@ import IndexCategory1 from 'pages/category1/Index';
 import Category1 from 'pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios';
 import EditarUsuario from 'pages/usuarios/editar';
+//import IndexProyectos from 'pages/proyectos';
+import EditarProyecto from 'pages/proyectos/editar';
 import 'styles/globals.css';
 import 'styles/tabla.css';
 
@@ -19,7 +21,7 @@ import 'styles/tabla.css';
 // });
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:5500/graphql',
   cache: new InMemoryCache(),
 });
 
