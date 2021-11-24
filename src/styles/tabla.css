@@ -7,7 +7,7 @@
 .tabla td,
 .tabla th {
   padding: 8px;
-  border: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .tabla th {

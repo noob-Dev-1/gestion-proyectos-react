@@ -29,13 +29,13 @@ const IndexProyectos = () => {
             <table className='tabla'>
                 <thead>
                     <tr>
-                        <th>Nombre</th>
+                        <th className='rounded-tl-2xl border-none'>Nombre</th>
                         <th>Presupuesto</th>
                         <th>Estado</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Fin</th>
                         <th>Fase</th>
-                        <th>Lider</th>
+                        <th className='rounded-tr-2xl border-none'>Lider</th>
                     </tr>
                 </thead>
                 <tbody>

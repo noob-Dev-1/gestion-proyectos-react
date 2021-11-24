@@ -24,7 +24,7 @@ const Logo = () => {
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   return (
-    <div className='flex flex-col md:flex-row flex-no-wrap md:h-full'>
+    <div className='flex flex-col md:flex-row flex-no-wrap md:h-full shadow-2xl'>
       {/* Sidebar starts */}
 
       <div className='sidebar hidden md:flex'>
@@ -33,7 +33,7 @@ const Sidebar = () => {
           <SidebarLinks />
         </div>
       </div>
-      <div className='flex md:hidden w-full justify-between bg-green-500 p-2 text-white'>
+      <div className='flex md:hidden w-full justify-between bg-green-500 p-2 text-white ' >
         <i className={`fas fa-${open ? 'times' : 'bars'}`} onClick={() => setOpen(!open)} />
         <i className='fas fa-home' />
       </div>
@@ -66,8 +66,8 @@ const SidebarRoute = ({ to, title, icon }) => {
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route text-white bg-green-500'
-            : 'sidebar-route text-gray-900 hover:text-black hover:bg-green-200'
+            ? 'sidebar-route text-white bg-green-500 '
+            : 'sidebar-route transform text-gray-500 hover:text-black hover:scale-110 hover:font-black hover:bg-green-200 hover:shadow-2xl '
         }
       >
         <div className='flex items-center'>
