@@ -10,7 +10,8 @@ const GET_PROYECTOS = gql`
         fechaFin
         estado
         fase
-
-}`;
+      }
+}
+`;
 
 export {GET_PROYECTOS}

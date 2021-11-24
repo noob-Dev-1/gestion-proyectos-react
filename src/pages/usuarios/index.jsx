@@ -10,7 +10,7 @@ const IndexUsuarios = () => {
   const { data, error, loading } = useQuery(GET_USUARIOS);
 
   useEffect(() => {
-    console.log('data servidor', data);
+    console.log('datos de usuarios en el servidor', data);
   }, [data]);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const IndexUsuarios = () => {
     }
   }, [error]);
 
-  if (loading) return <div>Cargando....</div>;
+  if (loading) return <div>Cargando la información de los usuarios....</div>;
 
   return (
     <div className ='m-24'>

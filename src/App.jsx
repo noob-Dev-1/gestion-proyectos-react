@@ -9,7 +9,7 @@ import IndexCategory1 from 'pages/category1/Index';
 import Category1 from 'pages/category1/CategoryPage1';
 import IndexUsuarios from 'pages/usuarios';
 import EditarUsuario from 'pages/usuarios/editar';
-//import IndexProyectos from 'pages/proyectos';
+import IndexProyectos from 'pages/proyectos';
 import EditarProyecto from 'pages/proyectos/editar';
 import 'styles/globals.css';
 import 'styles/tabla.css';
@@ -37,6 +37,7 @@ function App() {
               <Route path='' element={<Index />} />
               <Route path='/usuarios' element={<IndexUsuarios />} />
               <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+              <Route path='/proyectos' element={<IndexProyectos />} />
               <Route path='page2' element={<Page2 />} />
               <Route path='category1' element={<IndexCategory1 />} />
               <Route path='category1/page1' element={<Category1 />} />

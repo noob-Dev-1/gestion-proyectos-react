@@ -10,4 +10,17 @@ const Enum_EstadoUsuario = {
   NO_AUTORIZADO: 'No autorizado',
 };
 
-export { Enum_Rol, Enum_EstadoUsuario };
+const Enum_EstadoProyecto = {
+  ACTIVO: 'ACTIVO',
+  INACTIVO : 'INACTIVO',
+};
+
+
+const Enum_FaseProyecto = {
+ INICIADO: 'INICIADO',
+ DESARROLLO: 'DESARROLLO',
+ TERMINADO: 'TERMINADO',
+ NULO: '',
+};
+
+export { Enum_Rol, Enum_EstadoUsuario, Enum_EstadoProyecto,Enum_FaseProyecto };
