@@ -8,6 +8,7 @@ import { PROYECTOS } from 'graphql/proyectos/queries';
 import { data } from 'autoprefixer';
 import DropDown from 'components/Dropdown';
 import { Dialog } from '@mui/material';
+import Input from 'components/Input';
 import { Enum_EstadoProyecto } from 'utils/enum';
 import ButtonLoading from 'components/ButtonLoading';
 import { EDITAR_PROYECTO } from '../../graphql/proyectos/mutations';
@@ -45,11 +46,11 @@ const IndexProyectos = () => {
                     <h1 className='text-2xl font-bold text-gray-700'>Lista de Proyectos</h1>
                 </div>
                 {/* <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}> se habilita solo para administrador y lider*/}
-                    <div className='my-2 self-end'>
-                        <button className='bg-indigo-500 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
-                        <Link to= "/proyectos/nuevo"> Crear Nuevo proyecto </Link>    
-                        </button>
-                    </div>
+                <div className='my-2 self-end'>
+                    <button className='bg-indigo-500 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
+                        <Link to="/proyectos/nuevo"> Crear Nuevo proyecto </Link>
+                    </button>
+                </div>
                 {/* </PrivateComponent> */}
 
                 {queryData.Proyectos.map((proyecto) => {
@@ -114,7 +115,8 @@ const FormEditProyecto = ({ _id }) => {
     useEffect(() => {
         console.log("data mutations", dataMutation);
         if (dataMutation) {
-            toast.success('Proyecto modificado correctamente');}
+            toast.success('Proyecto modificado correctamente');
+        }
     }, [dataMutation]);
 
     return (

@@ -5,9 +5,13 @@ import { useMutation, useQuery } from '@apollo/client';
 import { GET_USUARIOS } from "graphql/usuarios/queries";
 import DropDown from 'components/Dropdown';
 import ButtonLoading from 'components/ButtonLoading';
-import useFormData from 'hooks/useFormData';
+import useFormData from 'hooks/useFormDataP';
 import { CREAR_PROYECTO } from 'graphql/proyectos/mutations';
-
+import { Enum_TipoObjetivo } from 'utils/enum.js';
+import { nanoid } from 'nanoid';
+import { ObjContext } from 'context/objContext';
+import { useObj } from 'context/objContext';
+import { toast } from 'react-toastify';
 
 const NuevoProyecto = () => {
     const { form, formData, updateFormData } = useFormData();
@@ -33,14 +37,29 @@ const NuevoProyecto = () => {
     }, [data]);
 
     useEffect(() => {
-        console.log('data mutation', mutationData);
-    });
+        console.log("modificando", mutationData)
+        if (mutationData) {
+            toast.success('Proyecto creado correctamente');
+
+        }
+    }, [mutationData]);
+
+    useEffect(() => {
+        if (mutationError) {
+            toast.error('Error creando el proyecto');
+        }
+
+    }, [mutationError]);
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log(formData)
-        /*formData.objetivos = Object.values(formData.objetivos);*/
+
+
         formData.presupuesto = parseFloat(formData.presupuesto);
+        formData.objetivos = Object.values(formData.objetivos);
+        console.log(formData)
+
+
 
         crearProyecto({
             variables: formData,
@@ -64,11 +83,77 @@ const NuevoProyecto = () => {
                 <Input name="fechaInicio" label="Fecha de Inicio" required={true} type="date" />
                 <Input name="fechaFin" label="Fecha de Fin" required={true} type="date" />
                 <DropDown label="Lider" options={listaUsuarios} name="lider" required={true} />
+                <Objetivos />
                 <ButtonLoading text="Crear Proyecto" loading={false} disabled={false} />
             </form>
 
         </div>
-    )
-}
+    );
+};
+
+const Objetivos = () => {
+    const [listaObjetivos, setListaObjetivos] = useState([]);
+    const [maxObjetivos, setMaxObjetivos] = useState(false);
+
+    const eliminarObjetivo = (id) => {
+        setListaObjetivos(listaObjetivos.filter((el) => el.props.id !== id));
+    };
+
+    const componenteObjetivoAgregado = () => {
+        const id = nanoid();
+        return <FormObjetivo key={id} id={id} />;
+    };
+
+    useEffect(() => {
+        if (listaObjetivos.length > 4) {
+            setMaxObjetivos(true);
+        } else {
+            setMaxObjetivos(false);
+        }
+    }, [listaObjetivos]);
+
+    return (
+        <ObjContext.Provider value={{ eliminarObjetivo }}>
+            <div>
+                <span>Objetivos del Proyecto</span>
+                {!maxObjetivos && (
+                    <i
+                        onClick={() => setListaObjetivos([...listaObjetivos, componenteObjetivoAgregado()])}
+                        className='fas fa-plus rounded-full bg-green-500 hover:bg-green-400 text-white p-2 mx-2 cursor-pointer'
+                    />
+                )}
+                {listaObjetivos.map((objetivo) => {
+                    return objetivo;
+                })}
+            </div>
+        </ObjContext.Provider>
+    );
+};
+
+const FormObjetivo = ({ id }) => {
+    const { eliminarObjetivo } = useObj();
+    return (
+        <div className='flex items-center'>
+            <Input
+                name={`nested||objetivos||${id}||descripcion`}
+                label='Descripción'
+                type='text'
+                required={true}
+            />
+            <DropDown
+                name={`nested||objetivos||${id}||tipo`}
+                options={Enum_TipoObjetivo}
+                label='Tipo de Objetivo'
+                required={true}
+            />
+            <i
+                onClick={() => eliminarObjetivo(id)}
+                className='fas fa-minus rounded-full bg-red-500 hover:bg-red-400 text-white p-2 mx-2 cursor-pointer mt-6'
+            />
+        </div>
+    );
+};
 
 export default NuevoProyecto;
+
+
