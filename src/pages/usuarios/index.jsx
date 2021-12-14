@@ -21,8 +21,10 @@ const IndexUsuarios = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <div>
-      Datos Usuarios:
+    <div className="h-full p-10 flex flex-col bg-gray-200">
+      <div className='flex w-full items-center justify-center'>
+        <h1 className='text-2xl font-bold text-gray-700 uppercase'>Usuarios:</h1>
+      </div>
       <table className='tabla'>
         <thead>
           <tr>

@@ -23,7 +23,7 @@ const AccordionStyled = styled((props) => <Accordion {...props} />)(({ theme }) 
 }));
 
 const AccordionSummaryStyled = styled((props) => <AccordionSummary {...props} />)(({ theme }) => ({
-    backgroundColor: "#008B8B",
+    backgroundColor: "#3F51B5",
 
 }));
 const AccordionDetailsStyled = styled((props) => <AccordionDetails {...props} />)(({ theme }) => ({
@@ -41,13 +41,13 @@ const IndexProyectos = () => {
 
     if (queryData.Proyectos) {
         return (
-            <div className="p-10 flex flex-col">
+            <div className="h-full p-10 flex flex-col bg-gray-200">
                 <div className='flex w-full items-center justify-center'>
-                    <h1 className='text-2xl font-bold text-gray-700'>Lista de Proyectos</h1>
+                    <h1 className='text-2xl font-bold text-gray-700 uppercase'>Lista de Proyectos</h1>
                 </div>
                 {/* <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}> se habilita solo para administrador y lider*/}
                 <div className='my-2 self-end'>
-                    <button className='bg-indigo-500 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
+                    <button className='bg-indigo-900 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
                         <Link to="/proyectos/nuevo"> Crear Nuevo proyecto </Link>
                     </button>
                 </div>
