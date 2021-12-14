@@ -37,8 +37,10 @@ const EditarUsuario = () => {
   };
 
   useEffect(() => {
+    console.log("modificando", mutationData)
     if (mutationData) {
       toast.success('Usuario modificado correctamente');
+      
     }
   }, [mutationData]);
 

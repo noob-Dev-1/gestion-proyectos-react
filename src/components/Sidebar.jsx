@@ -29,13 +29,13 @@ const Sidebar = () => {
     <div className='flex flex-col md:flex-row flex-no-wrap md:h-full'>
       {/* Sidebar starts */}
 
-      <div className='sidebar hidden md:flex'>
+      <div className='sidebar hidden md:flex '>
         <div className='px-8'>
           <Logo />
           <SidebarLinks />
         </div>
       </div>
-      <div className='flex md:hidden w-full justify-between bg-red-800 p-2 text-white'>
+      <div className='flex md:hidden w-full justify-between bg-red-500 p-2 text-white'>
         <i className={`fas fa-${open ? 'times' : 'bars'}`} onClick={() => setOpen(!open)} />
         <i className='fas fa-home' />
       </div>
@@ -68,8 +68,8 @@ const SidebarRoute = ({ to, title, icon }) => {
         to={to}
         className={({ isActive }) =>
           isActive
-            ? 'sidebar-route text-white bg-green-600'
-            : 'sidebar-route text-black hover:text-white hover:bg-green-700'
+            ? 'sidebar-route text-white bg-indigo-700 shadow-2xl shadow-blue-500/50'
+            : 'sidebar-route text-black hover:text-black hover:bg-indigo-400 hover:shadow-2xl'
         }
       >
         <div className='flex items-center'>

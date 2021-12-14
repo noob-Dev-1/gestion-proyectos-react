@@ -12,6 +12,7 @@ import { Enum_EstadoProyecto } from 'utils/enum';
 import ButtonLoading from 'components/ButtonLoading';
 import { EDITAR_PROYECTO } from '../../graphql/proyectos/mutations';
 import useFormData from 'hooks/useFormData';
+import { toast } from 'react-toastify';
 import PrivateComponent from 'components/PrivateComponent';
 import { Link } from "react-router-dom";
 //import PrivateComponent from 'components/PrivateComponent';
@@ -112,6 +113,8 @@ const FormEditProyecto = ({ _id }) => {
 
     useEffect(() => {
         console.log("data mutations", dataMutation);
+        if (dataMutation) {
+            toast.success('Proyecto modificado correctamente');}
     }, [dataMutation]);
 
     return (
