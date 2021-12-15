@@ -21,7 +21,7 @@ const IndexUsuarios = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <div className="h-full p-10 flex flex-col bg-gray-200">
+    <div className="h-full p-10 flex flex-col bg-green-200">
       <div className='flex w-full items-center justify-center'>
         <h1 className='text-2xl font-bold text-gray-700 uppercase'>Usuarios:</h1>
       </div>
@@ -34,7 +34,9 @@ const IndexUsuarios = () => {
             <th>Identificación</th>
             <th>Rol</th>
             <th>Estado</th>
+            {/* <PrivateComponent roleList={["ADMINISTRADOR"]}> :::Se activa cuando se tengan los roles definidos para el login*/}
             <th>Editar</th>
+            {/* <PrivateComponent/>*/}
           </tr>
         </thead>
         <tbody>
@@ -48,11 +50,16 @@ const IndexUsuarios = () => {
                   <td>{u.identificacion}</td>
                   <td>{Enum_Rol[u.rol]}</td>
                   <td>{Enum_EstadoUsuario[u.estado]}</td>
+                  {/* <PrivateComponent roleList={["ADMINISTRADOR"]}> :::Se activa cuando se tengan los roles definidos para el login*/}
                   <td>
                     <Link to={`/usuarios/editar/${u._id}`}>
                       <i className='fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer' />
                     </Link>
+                    <i
+                      //onClick={() => eliminarProducto()}
+                      className="fas fa-trash text-red-700 hover:text-red-500 pl-3 cursos-pointer" />
                   </td>
+                  {/* <PrivateComponent/>*/}
                 </tr>
               );
             })}

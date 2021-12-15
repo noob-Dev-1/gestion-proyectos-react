@@ -48,4 +48,12 @@ const ELIMINAR_OBJETIVO = gql`
   }
 `;
 
-export { EDITAR_PROYECTO, CREAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO };
+const ELIMINAR_PROYECTO = gql`
+  mutation Mutation($idProyecto: String!) {
+    eliminarProyecto(idProyecto: $idProyecto) {
+      _id
+    }
+  }
+`;
+
+export { EDITAR_PROYECTO, CREAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO, ELIMINAR_PROYECTO };
