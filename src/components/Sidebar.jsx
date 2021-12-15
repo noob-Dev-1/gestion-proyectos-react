@@ -37,7 +37,7 @@ const Sidebar = () => {
           <SidebarLinks />
         </div>
       </div>
-      <div className='flex md:hidden w-full justify-between bg-red-100 p-2 text-white'>
+      <div className='flex md:hidden w-full justify-between bg-indigo-400 p-2 text-white'>
         <i className={`fas fa-${open ? 'times' : 'bars'}`} onClick={() => setOpen(!open)} />
         <i className='fas fa-home' />
       </div>

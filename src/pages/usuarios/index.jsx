@@ -56,7 +56,7 @@ const IndexUsuarios = () => {
                       <i className='fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer' />
                     </Link>
                     <i
-                      //onClick={() => eliminarProducto()}
+                      //onClick={() => eliminarUsuario()}
                       className="fas fa-trash text-red-700 hover:text-red-500 pl-3 cursos-pointer" />
                   </td>
                   {/* <PrivateComponent/>*/}
