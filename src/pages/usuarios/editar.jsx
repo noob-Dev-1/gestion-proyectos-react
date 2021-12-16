@@ -32,7 +32,10 @@ const EditarUsuario = () => {
     console.log('fd', formData);
     delete formData.rol;
     editarUsuario({
-      variables: { _id, ...formData },
+      variables: {
+        _id,
+        campos: formData
+      },
     });
   };
 
@@ -40,7 +43,6 @@ const EditarUsuario = () => {
     console.log("modificando", mutationData)
     if (mutationData) {
       toast.success('Usuario modificado correctamente');
-      
     }
   }, [mutationData]);
 
