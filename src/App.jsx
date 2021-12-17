@@ -19,6 +19,7 @@ import NuevoProyecto from 'pages/proyectos/NuevoProyecto';
 import Registro from 'pages/auth/registro';
 import Login from 'pages/auth/login';
 import { AuthContext } from 'context/authContext';
+import IndexAvance from 'pages/avances';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
@@ -87,6 +88,7 @@ function App() {
               <Route path='page2' element={<Page2 />} />
               <Route path='/proyectos' element={<IndexProyectos />} />
               <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />
+              <Route path='/avances/:projectid' element={<IndexAvance  />} />
               <Route path='category1' element={<IndexCategory1 />} />
               <Route path='category1/page1' element={<Category1 />} />
             </Route>
