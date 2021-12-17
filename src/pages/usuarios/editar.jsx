@@ -8,7 +8,7 @@ import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
 import { EDITAR_USUARIO } from 'graphql/usuarios/mutations';
 import DropDown from 'components/Dropdown';
-import { Enum_EstadoUsuario } from 'utils/enums';
+import { Enum_EstadoUsuario } from 'utils/enum';
 
 const EditarUsuario = () => {
   const { form, formData, updateFormData } = useFormData(null);
@@ -32,11 +32,15 @@ const EditarUsuario = () => {
     console.log('fd', formData);
     delete formData.rol;
     editarUsuario({
-      variables: { _id, ...formData },
+      variables: {
+        _id,
+        campos: formData
+      },
     });
   };
 
   useEffect(() => {
+    console.log("modificando", mutationData)
     if (mutationData) {
       toast.success('Usuario modificado correctamente');
     }

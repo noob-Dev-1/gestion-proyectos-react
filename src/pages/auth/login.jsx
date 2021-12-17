@@ -25,7 +25,6 @@ const Login = () => {
   };
 
   useEffect(() => {
-    console.log('data mutation', dataMutation);
     if (dataMutation) {
       if (dataMutation.login.token) {
         setToken(dataMutation.login.token);
@@ -47,7 +46,7 @@ const Login = () => {
         />
       </form>
       <span>¿No tienes una cuenta?</span>
-      <Link to='/auth/register'>
+      <Link to='/auth/registro'>
         <span className='text-blue-700'>Regístrate</span>
       </Link>
     </div>

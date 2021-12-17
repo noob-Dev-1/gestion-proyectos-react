@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .sidebar {
-  @apply w-64 bg-gray-200 shadow flex-col justify-between;
+  @apply w-64 bg-red-500 shadow flex-col justify-between;
 }
 
 .sidebar-route {
@@ -11,5 +11,5 @@
 }
 
 .input {
-  @apply p-2 border border-indigo-200 focus:outline-none focus:border-indigo-800 rounded-md shadow-sm;
+  @apply p-2 border border-gray-200 focus:outline-none focus:border-green-600 rounded-md shadow-sm;
 }

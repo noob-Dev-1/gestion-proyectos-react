@@ -1,32 +1,62 @@
-import {gql}  from '@apollo/client';
 
-const EDITAR_PROYECTO =gql`
-    mutation EditarProyecto(
-        $_id:String!
-        $nombre: String!
-        $estado: Enum_EstadoProyecto!
-        $fase: Enum_FaseProyecto!
-        $fechaInicio: Date!
-        $fechaFin: Date!
-        $presupuesto: Number!
-        $lider: Schema.Types.ObjectId!
-        $objetivos: String!
-    ) {
-        editarProyecto(
-            _id: $_id
-            nombre: $nombre
-            presupuesto: $presupuesto
-            estado: $estado
-            fase: $fase
-            objetivos:   $objetivos
-        ) {
-            _id
-            nombre
-            presupuesto
-            estado
-            fase
-            objetivos
-        }
+import { gql } from '@apollo/client';
+
+const EDITAR_PROYECTO = gql`
+  mutation Mutation($_id: String!, $campos: camposProyecto!) {
+    editarProyecto(
+      _id: $_id,
+      campos: $campos
+      ) {
+      _id
+      estado
     }
+  }
 `;
-export {EDITAR_PROYECTO}
+
+const CREAR_PROYECTO = gql`
+  mutation CrearProyecto(
+    $nombre: String!
+    $presupuesto: Float!
+    $fechaInicio: Date!
+    $fechaFin: Date!
+    $lider: String!
+    $objetivos: [crearObjetivo]
+  ) {
+    crearProyecto(
+      nombre: $nombre
+      presupuesto: $presupuesto
+      fechaInicio: $fechaInicio
+      fechaFin: $fechaFin
+      lider: $lider
+      objetivos: $objetivos
+    ) {
+      _id
+    }
+  }
+`;
+
+const EDITAR_OBJETIVO = gql`
+  mutation EditarObjetivo($idProyecto: String!, $indexObjetivo: Int!, $campos: camposObjetivo!) {
+    editarObjetivo(idProyecto: $idProyecto, indexObjetivo: $indexObjetivo, campos: $campos) {
+      _id
+    }
+  }
+`;
+
+const ELIMINAR_OBJETIVO = gql`
+  mutation Mutation($idProyecto: String!, $idObjetivo: String!) {
+    eliminarObjetivo(idProyecto: $idProyecto, idObjetivo: $idObjetivo) {
+      _id
+    }
+  }
+`;
+
+const ELIMINAR_PROYECTO = gql`
+  mutation Mutation($idProyecto: String!) {
+    eliminarProyecto(idProyecto: $idProyecto) {
+      _id
+    }
+  }
+`;
+
+export { EDITAR_PROYECTO, CREAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO, ELIMINAR_PROYECTO };
