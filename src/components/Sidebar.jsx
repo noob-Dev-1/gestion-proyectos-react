@@ -59,7 +59,7 @@ const Sidebar = () => {
       {/* Sidebar starts */}
 
       <div className='sidebar hidden md:flex h-fu'>
-        <div className='px-8 bg-indigo-400 '>
+        <div className='px-8 bg-indigo-400'>
           <Logo />
           <SidebarLinks />
         </div>

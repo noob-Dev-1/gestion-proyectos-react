@@ -11,7 +11,7 @@ import { Dialog } from '@mui/material';
 import Input from 'components/Input';
 import { Enum_EstadoProyecto, Enum_TipoObjetivo } from 'utils/enum';
 import ButtonLoading from 'components/ButtonLoading';
-import { EDITAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO } from '../../graphql/proyectos/mutations';
+import { EDITAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO} from '../../graphql/proyectos/mutations';
 import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
 import PrivateComponent from 'components/PrivateComponent';
@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 import ReactLoading from 'react-loading'
 import { CREAR_INSCRIPCION } from 'graphql/inscripciones/mutaciones';
 import { useUser } from 'context/userContext';
-//import PrivateComponent from 'components/PrivateComponent';
+
 
 const AccordionStyled = styled((props) => <Accordion {...props} />)(({ theme }) => ({
     backgroundColor: "#00BFFF",
@@ -48,24 +48,24 @@ const IndexProyectos = () => {
         </div>);
 
     if (queryData.Proyectos) {
-        return (
+        return(
             <div className="h-full p-10 flex flex-col bg-green-200">
                 <div className='flex w-full items-center justify-center'>
                     <h1 className='text-2xl font-bold text-gray-700 uppercase'>Lista de Proyectos</h1>
                 </div>
-                {/* <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}> se habilita solo para administrador y lider*/}
+                 <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
                 <div className='my-2 self-end'>
-                    <button className='bg-indigo-900 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
+                    <button data-testid="boton-crear-proyecto" className='bg-indigo-900 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
                         <Link to="/proyectos/nuevo"> Crear Nuevo proyecto </Link>
                     </button>
                 </div>
-                {/* </PrivateComponent> */}
+                </PrivateComponent> 
 
                 {queryData.Proyectos.map((proyecto) => {
                     return <AccordionProyecto proyecto={proyecto} />;
 
                 })}
-            </div>
+                </div>
         );
     }
     return <></>;
@@ -89,7 +89,7 @@ const AccordionProyecto = ({ proyecto }) => {
                 </AccordionSummaryStyled>
                 <AccordionDetailsStyled>
                     <div className="relative h-1">
-                        {/* <PrivateComponent roleList={["ADMINISTRADOR"]}> :::Se activa cuando se tengan los roles definidos para el login*/}
+                        <PrivateComponent roleList={["ADMINISTRADOR"]}>
                         <button
                             type='button'
                             onClick={() => {
@@ -101,16 +101,16 @@ const AccordionProyecto = ({ proyecto }) => {
                         <i
                             //onClick={() => eliminarProyecto()}
                             className="fas fa-trash text-red-700 hover:text-red-500 pl-3 cursos-pointer absolute top-0 right-10" />
-                        {/* </PrivateComponent>
+                         </PrivateComponent>
                         
-                        {/*<div> Falta añadir private componente  roleList={['ESTUDIANTE']}
-                            <InscripcionProyecto
+                        <PrivateComponent  roleList={['ESTUDIANTE']}>
+                             <InscripcionProyecto
                                 idProyecto={proyecto._id}
                                 estado={proyecto.estado}
                                 inscripciones={proyecto.inscripciones}
                             />
-                        </div>
-                            */}
+                        </PrivateComponent>
+                            
                          
 
 
@@ -145,7 +145,7 @@ const AccordionProyecto = ({ proyecto }) => {
             </Dialog>
         </>
     )
-}
+};
 
 const FormEditProyecto = ({ _id }) => {
 
@@ -221,11 +221,11 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
             />
         );
     return (
-        <div className="mx-5 my-4 bg-gray-50 p-8 rounded-lg flex flex-col item-center justify-center shadow-xl">
+        <div className="y-scroll mx-5 my-4 bg-gray-50 p-8 rounded-lg flex flex-col item-center justify-center shadow-xl">
             <div className="text-lg font-bold">{tipo}</div>
             <div>{descripcion}</div>
 
-            {/* <PrivateComponent roleList={['ADMINISTRADOR','LIDER']}> se activa cuando se tengan roles definidos para el login*/}
+            <PrivateComponent roleList={['ADMINISTRADOR','LIDER']}> 
             <div className='flex my-2'>
                 <button type='button' onClick={() => setShowEditDialog(true)}>
                     <i className='fas fa-pen mx-2 text-yellow-500 hover:text-yellow-200 cursor-pointer' />
@@ -243,7 +243,7 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
                     setShowEditDialog={setShowEditDialog}
                 />
             </Dialog>
-            {/* </PrivateComponent> */}
+            </PrivateComponent>
 
         </div>
     );
@@ -311,7 +311,7 @@ const EditarObjetivo = ({
     );
 };
 
-/*
+
 const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     const [estadoInscripcion, setEstadoInscripcion] = useState('');
 
@@ -359,6 +359,6 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
         </>
     );
 };
-*/
+
 
 export default IndexProyectos;
