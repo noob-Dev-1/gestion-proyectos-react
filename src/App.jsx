@@ -55,23 +55,6 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-<<<<<<< HEAD
-      <UserContext.Provider value={{ userData, setUserData }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<PrivateLayout />}>
-              <Route path='' element={<Index />} />
-              <Route path='/usuarios' element={<IndexUsuarios />} />
-              <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
-              <Route path='/proyectos' element={<IndexProyectos />} />
-              <Route path='page2' element={<Page2 />} />
-              <Route path='category1' element={<IndexCategory1 />} />
-              <Route path='category1/page1' element={<Category1 />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </UserContext.Provider>
-=======
       <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
         <UserContext.Provider value={{ userData, setUserData }}>
           <BrowserRouter>
@@ -92,7 +75,6 @@ function App() {
           </BrowserRouter>
         </UserContext.Provider>
       </AuthContext.Provider>
->>>>>>> 4c3ee188c670e98c4e11c662c2546058fb6f16e6
     </ApolloProvider>
   );
 }
