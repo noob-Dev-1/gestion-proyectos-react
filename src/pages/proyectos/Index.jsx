@@ -88,6 +88,12 @@ const AccordionProyecto = ({ proyecto }) => {
 
                 </AccordionSummaryStyled>
                 <AccordionDetailsStyled>
+                <PrivateComponent roleList={['ESTUDIANTE']}>
+                <InscripcionProyecto 
+                idProyecto={proyecto._id}
+                estado={proyecto.estado}
+                inscripciones={proyecto.inscripciones}/>
+                 </PrivateComponent>
                     <div className="relative h-1">
                         {/* <PrivateComponent roleList={["ADMINISTRADOR"]}> :::Se activa cuando se tengan los roles definidos para el login*/}
                         <button
@@ -309,6 +315,34 @@ const EditarObjetivo = ({
             </form>
         </div>
     );
+};
+
+const InscripcionProyecto=({idProyecto,estado})=>{
+    const[crearInscripcion,{data,loading,error}]=useMutation(CREAR_INSCRIPCION);
+    const{userData}=useUser();
+
+    useEffect(()=>{
+        if (data){
+            console.log(data);
+            toast.success("inscripcion creada con exito");
+        }
+    },[data]);
+
+    const confirmarInscripcion=()=>{
+        crearInscripcion({variables:{proyecto:idProyecto,estudiante:userData._id}});
+    }
+    //onClick={()=>confirmarInscripcion()}
+    return(
+        <ButtonLoading
+        onClick={()=>confirmarInscripcion()}
+     disabled={estado==='INACTIVO'}
+     loading={loading}
+      text='Inscribirme en este proyecto' 
+      />
+      );
+        
+         
+    
 };
 
 /*
