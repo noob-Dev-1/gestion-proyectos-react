@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import PrivateRoute from 'components/PrivateRoute';
+import { useParams } from 'react-router-dom';
 import { GET_INSCRIPCIONES } from 'graphql/inscripciones/queries';
 import { APROBAR_INSCRIPCION } from 'graphql/inscripciones/mutaciones';
 import ButtonLoading from 'components/ButtonLoading';
@@ -13,12 +14,18 @@ import {
 
 const IndexInscripciones = () => {
   // falta capturar error de query
-  const { data, loading, refetch } = useQuery(GET_INSCRIPCIONES);
-  
+  const {idProyecto}= useParams();
+  const { data, loading, refetch } = useQuery(GET_INSCRIPCIONES, {
+  variables: {
+    idProyecto: idProyecto,
+  },
+});
+
+
   if (loading) return <div>Loading...</div>;
+  console.log(data);
   return (
-    <div>PAGINA Inscripcion</div>
-    /*<PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
+    <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div className='p-10'>
         <div>Pagina de inscripciones</div>
         <div className='my-4'>
@@ -37,7 +44,7 @@ const IndexInscripciones = () => {
           />
         </div>
       </div>
-    </PrivateRoute>*/
+    </PrivateRoute>
   );
 };
 

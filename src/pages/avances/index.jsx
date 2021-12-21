@@ -22,15 +22,16 @@ const IndexAvance = () => {
   });
 
   if (loading) return <div>Loading...</div>;
-
+console.log(data)
   return (
     <div className='flex flex-col p-10 items-center w-full'>
       <h1 className='text-2xl font-bold text-gray-900 my-2'>
         Avances para el proyecto {projectid}
       </h1>
+
       <button
         onClick={() => setOpenDialog(true)}
-        className='flex-end bg-indigo-500'
+        className='bg-indigo-900 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'
         type='button'
       >
         Crear nuevo avance

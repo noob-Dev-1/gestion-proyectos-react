@@ -25,7 +25,7 @@ import IndexAvance from 'pages/avances';
 // import PrivateRoute from 'components/PrivateRoute';
 
 const httpLink = createHttpLink({
-  uri: 'https://localhost:5500/graphql',
+  uri: 'https://servidor-noobdev.herokuapp.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
