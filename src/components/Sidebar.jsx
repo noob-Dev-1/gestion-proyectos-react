@@ -45,7 +45,7 @@ const Logout = () => {
 const Logo = () => {
   return (
     <div className='py-3 w-full flex flex-col items-center justify-center'>
-      <img src='logoNoobDev.png' alt='Logo' className='h-30' />
+      <img src='favNoobdev.png' alt='Logo' className='h-24' />
       <div className='flex w-full items-center justify-center'>
         <span className='pl-10 text-2xl font-bold text-gray-700'>Gestión de proyectos</span>
       </div>
