@@ -11,7 +11,7 @@ import { Dialog } from '@mui/material';
 import Input from 'components/Input';
 import { Enum_EstadoProyecto, Enum_TipoObjetivo } from 'utils/enum';
 import ButtonLoading from 'components/ButtonLoading';
-import { EDITAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO } from '../../graphql/proyectos/mutations';
+import { EDITAR_PROYECTO, ELIMINAR_OBJETIVO, EDITAR_OBJETIVO} from '../../graphql/proyectos/mutations';
 import useFormData from 'hooks/useFormData';
 import { toast } from 'react-toastify';
 import PrivateComponent from 'components/PrivateComponent';
@@ -48,24 +48,24 @@ const IndexProyectos = () => {
         </div>);
 
     if (queryData.Proyectos) {
-        return (
+        return(
             <div className="h-full p-10 flex flex-col bg-green-200">
                 <div className='flex w-full items-center justify-center'>
                     <h1 className='text-2xl font-bold text-gray-700 uppercase'>Lista de Proyectos</h1>
                 </div>
-                <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
-                    <div className='my-2 self-end'>
-                        <button data-testid="boton-crear-proyecto" className='bg-indigo-900 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
-                            <Link to="/proyectos/nuevo"> Crear Nuevo proyecto </Link>
-                        </button>
-                    </div>
-                </PrivateComponent>
+                 <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+                <div className='my-2 self-end'>
+                    <button data-testid="boton-crear-proyecto" className='bg-indigo-900 text-red-50 p-2 rounded-lg shadow-lg hover:bg-indigo-300'>
+                        <Link to="/proyectos/nuevo"> Crear Nuevo proyecto </Link>
+                    </button>
+                </div>
+                </PrivateComponent> 
 
                 {queryData.Proyectos.map((proyecto) => {
                     return <AccordionProyecto proyecto={proyecto} />;
 
                 })}
-            </div>
+                </div>
         );
     }
     return <></>;
@@ -90,28 +90,28 @@ const AccordionProyecto = ({ proyecto }) => {
                 <AccordionDetailsStyled>
                     <div className="relative h-1">
                         <PrivateComponent roleList={["ADMINISTRADOR"]}>
-                            <button
-                                type='button'
-                                onClick={() => {
-                                    setShowDialog(true);
-                                }}
-                            >
-                                <i className=" mx-4 fas fa-pen text-yellow-700 hover:text-yellow-500 absolute top-0 right-14" onClick={() => { setShowDialog(true) }} />
-                            </button>
-                            <i
-                                //onClick={() => eliminarProyecto()}
-                                className="fas fa-trash text-red-700 hover:text-red-500 pl-3 cursos-pointer absolute top-0 right-10" />
-                        </PrivateComponent>
-
-                        <PrivateComponent roleList={['ESTUDIANTE']}>
-                            <InscripcionProyecto
+                        <button
+                            type='button'
+                            onClick={() => {
+                                setShowDialog(true);
+                            }}
+                        >
+                            <i className=" mx-4 fas fa-pen text-yellow-700 hover:text-yellow-500 absolute top-0 right-14" onClick={() => { setShowDialog(true) }} />
+                        </button>
+                        <i
+                            //onClick={() => eliminarProyecto()}
+                            className="fas fa-trash text-red-700 hover:text-red-500 pl-3 cursos-pointer absolute top-0 right-10" />
+                         </PrivateComponent>
+                        
+                        <PrivateComponent  roleList={['ESTUDIANTE']}>
+                             <InscripcionProyecto
                                 idProyecto={proyecto._id}
                                 estado={proyecto.estado}
                                 inscripciones={proyecto.inscripciones}
                             />
                         </PrivateComponent>
-
-
+                            
+                         
 
 
                     </div>
@@ -225,24 +225,24 @@ const Objetivo = ({ index, _id, idProyecto, tipo, descripcion }) => {
             <div className="text-lg font-bold">{tipo}</div>
             <div>{descripcion}</div>
 
-            <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-                <div className='flex my-2'>
-                    <button type='button' onClick={() => setShowEditDialog(true)}>
-                        <i className='fas fa-pen mx-2 text-yellow-500 hover:text-yellow-200 cursor-pointer' />
-                    </button>
-                    <button type='button' onClick={ejecutarEliminacion}>
-                        <i className='fas fa-trash mx-2 text-red-500 hover:text-red-200 cursor-pointer' />
-                    </button>
-                </div>
-                <Dialog open={showEditDialog} onClose={() => setShowEditDialog(false)}>
-                    <EditarObjetivo
-                        descripcion={descripcion}
-                        tipo={tipo}
-                        index={index}
-                        idProyecto={idProyecto}
-                        setShowEditDialog={setShowEditDialog}
-                    />
-                </Dialog>
+            <PrivateComponent roleList={['ADMINISTRADOR','LIDER']}> 
+            <div className='flex my-2'>
+                <button type='button' onClick={() => setShowEditDialog(true)}>
+                    <i className='fas fa-pen mx-2 text-yellow-500 hover:text-yellow-200 cursor-pointer' />
+                </button>
+                <button type='button' onClick={ejecutarEliminacion}>
+                    <i className='fas fa-trash mx-2 text-red-500 hover:text-red-200 cursor-pointer' />
+                </button>
+            </div>
+            <Dialog open={showEditDialog} onClose={() => setShowEditDialog(false)}>
+                <EditarObjetivo
+                    descripcion={descripcion}
+                    tipo={tipo}
+                    index={index}
+                    idProyecto={idProyecto}
+                    setShowEditDialog={setShowEditDialog}
+                />
+            </Dialog>
             </PrivateComponent>
 
         </div>
@@ -345,20 +345,20 @@ const InscripcionProyecto = ({ idProyecto, estado, inscripciones }) => {
     return (
         <>
             {estadoInscripcion !== '' ? (
-                <div className='flex flex-col items-start'>
-                    <span>
-                        Ya estas inscrito en este proyecto y el estado es{' '}
-                        {estadoInscripcion}
-                    </span>
-                    {estadoInscripcion === 'ACEPTADO' && (
-                        <Link
-                            to={`/avances/${idProyecto}`}
-                            className='bg-yellow-700 p-2 rounded-lg text-white my-2 hover:bg-yellow-500'
-                        >
-                            Agregar Avance
-                        </Link>
-                    )}
-                </div>
+        <div className='flex flex-col items-start'>
+        <span>
+          Ya estas inscrito en este proyecto y el estado es{' '}
+          {estadoInscripcion}
+        </span>
+        {estadoInscripcion === 'ACEPTADO' && (
+          <Link
+            to={`/avances/${idProyecto}`}
+            className='bg-yellow-700 p-2 rounded-lg text-white my-2 hover:bg-yellow-500'
+          >
+            Agregar Avance
+          </Link>
+        )}
+      </div>
             ) : (
                 <ButtonLoading
                     onClick={() => confirmarInscripcion()}
