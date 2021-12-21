@@ -9,12 +9,12 @@ const SidebarLinks = () => {
     <ul className='mt-12'>
       <SidebarRoute to='' title='Inicio' icon='fas fa-home' />
       <PrivateComponent roleList={['ADMINISTRADOR']}>
-        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-user' />
+        <SidebarRoute to='/usuarios' title='Usuarios' icon='fas fa-users-cog' />
       </PrivateComponent>
-      <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-smile-wink' />
-      <SidebarRoute to='/avances' title='Avances' icon='fas fa-book-open' />
+      <SidebarRoute to='/proyectos' title='Proyectos' icon='fas fa-project-diagram' />
+      <SidebarRoute to='/avances' title='Avances' icon='fas fa-tags' />
       <PrivateComponent roleList={['ADMINISTRADOR', 'LIDER']}>
-        <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-users' />
+        <SidebarRoute to='/inscripciones' title='Aprobacion Inscripciones' icon='fas fa-scroll' />
       </PrivateComponent>
       <Logout />
     </ul>
@@ -44,7 +44,7 @@ const Logo = () => {
     <div className='py-3 w-full flex flex-col items-center justify-center'>
       <img src='favNoobdev.png' alt='Logo' className='h-24' />
       <div className='flex w-full items-center justify-center'>
-        <span className='pl-10 text-2xl font-bold text-gray-700'>Gestión de proyectos</span>
+        <span className='pl-10 text-2xl font-bold text-gray-700'>Gestión de Proyectos</span>
       </div>
     </div>
   );
