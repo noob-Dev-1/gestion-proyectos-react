@@ -24,11 +24,11 @@ import IndexAvance from 'pages/avances';
 
 // import PrivateRoute from 'components/PrivateRoute';
 
- const httpLink = createHttpLink({
-   uri: 'https://servidor-noobdev.herokuapp.com/graphql',
- });
+const httpLink = createHttpLink({
+  uri: 'https://localhost:5500/graphql',
+});
 
-  const authLink = setContext((_, { headers }) => {
+const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = JSON.parse(localStorage.getItem('token'));
   console.log(token, 'el token');
@@ -36,17 +36,17 @@ import IndexAvance from 'pages/avances';
   return {
     headers: {
       ...headers,
-      authorization: token ?  `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : '',
     },
   };
-}); 
+});
 console.log(authLink, "este es el authlink");
 
- const client = new ApolloClient({
+const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink),
 });
- 
+
 function App() {
   const [userData, setUserData] = useState({});
   const [authToken, setAuthToken] = useState('');
@@ -79,28 +79,28 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <AuthContext.Provider value={{ authToken, setAuthToken, setToken }}>
-      <UserContext.Provider value={{ userData, setUserData }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<PrivateLayout />}>
-              <Route path='' element={<Index />} />
-              <Route path='/usuarios' element={<IndexUsuarios />} />
-              <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
-              <Route path='page2' element={<Page2 />} />
-              <Route path='/proyectos' element={<IndexProyectos />} />
-              <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />
-              <Route path='/inscripciones' element={<IndexInscripciones />} />
-              <Route path='/avances/:projectid' element={<IndexAvance  />} />
-              <Route path='category1' element={<IndexCategory1 />} />
-              <Route path='category1/page1' element={<Category1 />} />
-            </Route>
-            <Route path='/auth' element={<AuthLayout />}>
+        <UserContext.Provider value={{ userData, setUserData }}>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={<PrivateLayout />}>
+                <Route path='' element={<Index />} />
+                <Route path='/usuarios' element={<IndexUsuarios />} />
+                <Route path='/usuarios/editar/:_id' element={<EditarUsuario />} />
+                <Route path='page2' element={<Page2 />} />
+                <Route path='/proyectos' element={<IndexProyectos />} />
+                <Route path='/proyectos/nuevo' element={<NuevoProyecto />} />
+                <Route path='/inscripciones' element={<IndexInscripciones />} />
+                <Route path='/avances/:projectid' element={<IndexAvance />} />
+                <Route path='category1' element={<IndexCategory1 />} />
+                <Route path='category1/page1' element={<Category1 />} />
+              </Route>
+              <Route path='/auth' element={<AuthLayout />}>
                 <Route path='registro' element={<Registro />} />
                 <Route path='login' element={<Login />} />
               </Route>
-          </Routes>
-        </BrowserRouter>
-      </UserContext.Provider>
+            </Routes>
+          </BrowserRouter>
+        </UserContext.Provider>
       </AuthContext.Provider>
     </ApolloProvider>
   );

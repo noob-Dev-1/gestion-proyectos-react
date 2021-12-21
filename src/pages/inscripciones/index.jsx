@@ -14,10 +14,11 @@ import {
 const IndexInscripciones = () => {
   // falta capturar error de query
   const { data, loading, refetch } = useQuery(GET_INSCRIPCIONES);
-
+  
   if (loading) return <div>Loading...</div>;
   return (
-    <PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
+    <div>PAGINA Inscripcion</div>
+    /*<PrivateRoute roleList={['ADMINISTRADOR', 'LIDER']}>
       <div className='p-10'>
         <div>Pagina de inscripciones</div>
         <div className='my-4'>
@@ -36,7 +37,7 @@ const IndexInscripciones = () => {
           />
         </div>
       </div>
-    </PrivateRoute>
+    </PrivateRoute>*/
   );
 };
 
